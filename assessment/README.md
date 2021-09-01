@@ -7,6 +7,4 @@ Code : [RockPaperScissor.java](https://github.com/junha1532/-Mthree-_Exercieses-
 
 Flowchat : 
 
-![alt text][flowchart1]
-
-[flowchart1]: https://github.com/junha1532/-Mthree-_Exercieses-Assessments/edit/main/assessment/flowchart1.png "Rock, Paper, Scissor"
+![alt text](https://github.com/junha1532/-Mthree-_Exercieses-Assessments/edit/main/assessment/flowchart1.png "Rock, Paper, Scissor")
