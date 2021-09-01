@@ -1,9 +1,9 @@
 # Mthree Assessment
 
-Rock, Paper, Scissor
+Rock, Paper, Scissors
 --
 
-Code : [RockPaperScissor.java](./RockPaperScissors.java)
+Code : [RockPaperScissors.java](./RockPaperScissors.java)
 
 Flowchat : 
 
