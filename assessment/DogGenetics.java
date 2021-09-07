@@ -5,6 +5,8 @@
  */
 package com.sg.foundations.basics.assessment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,30 +17,37 @@ import java.util.Scanner;
 public class DogGenetics {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Random randomGen = new Random();
         
         // Get the dog's name as input 
         System.out.println("What is your dog's name?");
         String dogName = scanner.nextLine();
-        
-        // Generate random percentages that add up to 100
-        int[] breedPctg = randPercentages(5);
         
         // Print Genetics Report
         System.out.println(String.format("Well then, I have this highly reliable report on %s's prestigious background right here.", dogName));
         System.out.println("");
         System.out.println(String.format("%s is:", dogName));
         System.out.println("");
-        System.out.println(String.format("%d%% St. Bernard", breedPctg[0]));
-        System.out.println(String.format("%d%% Chihuahua", breedPctg[1]));
-        System.out.println(String.format("%d%% Dramatic RedNosed Asian Pug", breedPctg[2]));
-        System.out.println(String.format("%d%% Common Cur", breedPctg[3]));
-        System.out.println(String.format("%d%% King Doberman", breedPctg[4]));
+        
+        // Pring 4 dogs
+        int numDogs = 4;
+        // Generate random percentages that add up to 100
+        int[] breedPctg = randPercentages(numDogs);
+        String[] breeds_array = {"St. Bernard", "Chihuahua", "Dramatic RedNosed Asian Pug", "Common Cur", "King Doberman", "Bull Dog"};
+        ArrayList<String> breeds = new ArrayList<>(Arrays.asList(breeds_array));
+        
+        for (int i = 0; i < numDogs; i++) {
+            int index = randomGen.nextInt(breeds.size());
+            System.out.println(String.format("%d%% %s", breedPctg[i], breeds.get(index)));
+            breeds.remove(index);
+        }
+        
         System.out.println("");
         System.out.println("Wow, that's QUITE the dog!");
     }
     public static int[] randPercentages(int num){
         int randInts[] = new int[num];
-        Random randomGen = new Random(1001);
+        Random randomGen = new Random();
         for (int i = 0; i < num; i++) {
             int sum=0;
             if (i==0) { 
@@ -47,6 +56,12 @@ public class DogGenetics {
             for (int j = 0; j < i; j++) {
                 sum += randInts[j];
             }
+            // The last percentage is always 100 - sum of previous percentages
+            if(i==num-1){
+                randInts[i] = 100 - sum;
+                break;
+            }
+            // Generate random number from range of (0, 100 - sum of previous percentages)
             randInts[i] = randomGen.nextInt(101 - sum);
         }
         return  randInts;

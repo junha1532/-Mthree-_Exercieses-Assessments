@@ -22,5 +22,7 @@ public class HealthyHearts {
         int min = (int) Math.round(0.5*(220-age));
         int max = (int) Math.round(0.85*(220-age));
         System.out.println(String.format("Your target HR Zone is %d - %d beats per minute", min, max));
+        
+        
     }
 }

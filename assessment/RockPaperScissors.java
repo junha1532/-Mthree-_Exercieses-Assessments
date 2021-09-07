@@ -16,7 +16,7 @@ public class RockPaperScissors {
     public static void main(String[] args) {
         // Initialize Scanner and Random Object
         Scanner scanner = new Scanner(System.in);
-        Random randomGen = new Random(1001);
+        Random randomGen = new Random();
         
         // New game is created/played until the player decides to quit
         while (true){
