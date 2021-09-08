@@ -18,26 +18,29 @@ import java.util.Scanner;
  */
 public class StateCapitals3 {
     public static void main(String[] args) throws FileNotFoundException {
+        // 1. Read MoreStateCapitals.txt from absolute path to the working directory
         Scanner sc = new Scanner(
         new BufferedReader(new FileReader("C:\\Users\\junha\\Desktop\\JavaProjects\\basics\\src\\main\\java\\com\\sg\\foundations\\basics\\exercise\\MoreStateCapitals.txt")));
-        // go through the file line by line
+        
+        // 2. Instantiate a hashmap that will store key-value pair for each US state and its capital city
         Map<String,Capital> stateCapitals = new HashMap<String,Capital>();
         
+        // 3. Our scanner reads Read StateCapitals.txt line by line and stores state/capital info to the hashmap
         while (sc.hasNextLine()) {
             String currentLine = sc.nextLine();
             Capital capital = new Capital(currentLine.split("::")[1], Integer.parseInt(currentLine.split("::")[2]), Double.parseDouble(currentLine.split("::")[3]));
             stateCapitals.put(currentLine.split("::")[0], capital);
         }
-        // 1. Print all 50 states and capital info.
         
+        // 4. Print all 50 states and capital info.
         System.out.println(stateCapitals.size() + " STATE/CAPITAL PAIRS LOADED.\n" + "==============================");
-        
         for (String state : stateCapitals.keySet()){
             System.out.println(String.format("%s - %s | Pop: %d | Area: %.2f sq mi", state, stateCapitals.get(state).getName(), stateCapitals.get(state).getPopulation(), stateCapitals.get(state).getSquareMileage() ));
         }
         
         Scanner scanner = new Scanner(System.in);
         
+        // 5. Print all states that have lower limit for its population.
         System.out.println("Please enter the lower limit for capital city population: ");
         int populationLimit = Integer.parseInt(scanner.nextLine());
         
@@ -48,6 +51,7 @@ public class StateCapitals3 {
             }
         }
         
+        // 6. Print all states that have upper limit for its sq milage.
         System.out.println("Please enter the upper limit for capital city sq mileage: ");
         double sqMilageLimit = Double.parseDouble(scanner.nextLine());
         
